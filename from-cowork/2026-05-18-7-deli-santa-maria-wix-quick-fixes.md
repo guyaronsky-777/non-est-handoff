@@ -1,48 +1,53 @@
-# Deli Santa Maria — Wix Quick Fixes (high leverage, ~30 min)
+# Deli Santa Maria — Wix Quick Fixes (DUAL POSITIONING — supersedes prior version)
 
 **From:** Claude in Cowork
 **To:** Claude in Chrome
-**Date:** 2026-05-18
-**Status:** awaiting Chrome execution. Can run after Day 5 Retool work, OR Yaron may interrupt Day 5 if he wants these live tonight.
-**Subject:** Apply 4 surgical edits to https://www.deli-caffe.com to fix the biggest AI misclassification finding from today's Mirror Report.
+**Date:** 2026-05-18 (revised after Yaron locked dual positioning decision)
+**Status:** awaiting Chrome execution AFTER Day 5 Retool dashboard finishes
+**Subject:** Apply 4 surgical edits to https://www.deli-caffe.com using the DUAL POSITIONING approach.
 
 ---
 
-## Context — why this matters
+## ⚠️ This file has been revised — read the strategy first
 
-Today's AI Mirror demo (file: `Non Est/AI-MIRROR-DEMO_Deli_Santa_Maria_2026-05-18.md`) found that every AI engine (Gemini, ChatGPT, Perplexity, Claude) categorizes Deli Santa Maria as a generic Mediterranean restaurant — not as the Israeli/Middle-Eastern fusion deli it actually is. The root cause: the Wix site's schema, title tag, and meta description all lead with "Mediterranean" and never mention "Israeli" or "Middle Eastern" prominently.
+**Previous draft assumed "Israeli-first everywhere." That's been changed.**
 
-These 4 edits change how the site is interpreted by AI engines on the next crawl. Expected effect: within 2–3 weeks, queries like "best Israeli food Mallorca" and "shakshuka Mallorca" start surfacing Deli Santa Maria instead of only Palma competitors.
+The locked positioning is **dual, context-layered:**
+- Schema captures both **Middle Eastern + Israeli** (so AI engines surface the restaurant for both query pools)
+- Public-facing English/Spanish/German copy leads with **"Middle Eastern & Israeli"** (lower geopolitical friction in current 2026 climate)
+- Hebrew touchpoints lead with **"Israeli"** (authentic, captures Hebrew-language demand)
 
-Site is hosted on Wix (Wix.com Website Builder per the page's `meta-generator` tag). Yaron is the owner — log into Wix dashboard with his session.
+Canonical sentence: **"A Middle Eastern & Israeli kitchen — the way it's eaten at home. Real food, real hands, daily."**
 
 ---
 
 ## Edit #1 — Page title tag
 
-**Where:** Wix Editor → home page → SEO Basics (or the SEO tools panel) → Page Title field
+**Where:** Wix Editor → home page → SEO Basics → Page Title field
 **Current:** `Deli Santa Maria | Mediterranean kitchen | Mallorca`
-**Change to:** `Deli Santa Maria | Israeli & Mediterranean Kitchen | Mallorca`
+**Change to:** `Deli Santa Maria | Middle Eastern & Mediterranean Kitchen | Mallorca`
 
-This is the single most weighted field by AI engines. Just adding "Israeli &" before "Mediterranean" repositions the entire page.
+Notes:
+- Leads with "Middle Eastern" (broader appeal, lower friction).
+- "Israeli" is NOT in the title — it's deeper in schema + alternateName. Title is the most visible public surface.
+- "Mediterranean" stays as the secondary anchor to retain existing SEO equity.
 
 ## Edit #2 — Page meta description
 
-**Where:** Wix Editor → home page → SEO Basics → Meta Description field (limit ~155 characters)
+**Where:** Wix Editor → home page → SEO Basics → Meta Description field (limit ~155 chars)
 **Current:** `Mediterranean restaurant, Takeaway & catering in Santa María del Camí, Mallorca. Local specialities, vegan-friendly brunch, dog-friendly terrace. Mon–Fri 9–16, Sun 9–15.`
-**Change to (149 chars):** `Inland Mallorca's authentic Israeli & Mediterranean deli — shakshuka, hummus, tahini. Vegan-friendly brunch. Santa Maria del Camí. Mon–Fri 9–16.`
+**Change to (153 chars):** `Inland Mallorca's Middle Eastern & Israeli kitchen — shakshuka, hummus, tahini. Real daily cooking, not a hotel concept. Vegan-friendly. Mon–Fri 9–16.`
 
-This is the second most weighted field. Leading with "authentic Israeli" + naming signature dishes (shakshuka, hummus, tahini) gives AI engines specific entity terms to match against user queries.
+Notes:
+- "Middle Eastern" leads, "Israeli" present.
+- Names signature dishes (shakshuka, hummus, tahini) — direct entity terms for AI matching.
+- "Real daily cooking, not a hotel concept" is the differentiation against NENI Mallorca.
 
-## Edit #3 — Schema `servesCuisine` (CRITICAL — biggest impact)
+## Edit #3 — Schema `servesCuisine` and related fields (CRITICAL — biggest impact)
 
-**Where:** This is JSON-LD schema embedded in the page source. In Wix, schema is typically managed via one of:
-- **Wix Editor → page → SEO Basics → Advanced → "Add structured data"** (some Wix plans have this UI)
-- **Wix Editor → Settings → Custom Code → "Add Custom Code"** with a `<script type="application/ld+json">` block placed in `<head>` of the home page only
-- **Velo (Wix code)** if a developer has set it up
-- **Wix's auto-generated Restaurant schema** if the business type is set to Restaurant in business profile
+**Where:** Wix's schema is at the bottom of the home page source as a JSON-LD `<script>`. Manage via Wix Editor → page SEO → Advanced → Add structured data, OR via Settings → Custom Code (if needed).
 
-**Current schema (from page source):**
+**Current schema:**
 ```json
 {
   "@context": "https://schema.org",
@@ -52,7 +57,10 @@ This is the second most weighted field. Leading with "authentic Israeli" + namin
   "telephone": "+34628008066",
   "priceRange": "€€",
   "servesCuisine": ["Mediterranean","Vegetarian","Brunch","Breakfast"],
-  ...
+  "address": {...},
+  "geo": {...},
+  "openingHours": ["Mo-Fr 09:00-16:00","Su 09:00-15:00"],
+  "aggregateRating": {"@type":"AggregateRating","ratingValue":"4.8","reviewCount":"400"}
 }
 ```
 
@@ -63,12 +71,12 @@ This is the second most weighted field. Leading with "authentic Israeli" + namin
   "@type": "Restaurant",
   "name": "Deli Santa Maria",
   "alternateName": ["דלי סנטה מריה","Deli SM","Santa Maria Deli"],
-  "description": "The only authentic Israeli & Middle-Eastern deli in Mallorca's interior. Fresh shakshuka, hummus, tahini fusions, signature date-syrup pastries, vegan-friendly brunch.",
+  "description": "Inland Mallorca's Middle Eastern & Israeli kitchen — real shakshuka, hummus from scratch, real tahini, signature date-syrup pastries. Vegan-friendly daily cooking. The way it's eaten at home.",
   "url": "https://www.deli-caffe.com",
   "telephone": "+34628008066",
   "priceRange": "€€",
-  "servesCuisine": ["Israeli","Middle Eastern","Mediterranean","Vegetarian","Brunch","Breakfast"],
-  "keywords": "Israeli food Mallorca, shakshuka, hummus, tahini, Middle Eastern, inland Mallorca, brunch, deli, vegan-friendly, dog-friendly, kosher-style",
+  "servesCuisine": ["Middle Eastern","Israeli","Mediterranean","Vegetarian","Brunch","Breakfast"],
+  "keywords": "Middle Eastern food Mallorca, Israeli food Mallorca, shakshuka, hummus, tahini, inland Mallorca, brunch, deli, vegan-friendly, dog-friendly, authentic kitchen",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Carrer de l'Església, 13",
@@ -91,54 +99,54 @@ This is the second most weighted field. Leading with "authentic Israeli" + namin
 }
 ```
 
-**Three changes from current to new:**
-1. `servesCuisine` array prepended with `"Israeli"` and `"Middle Eastern"` (before "Mediterranean")
-2. New `alternateName` array including the Hebrew name (`דלי סנטה מריה`) for Hebrew-language Israeli traveler searches
-3. New `description` and `keywords` fields explicitly stating the category and signature dishes
+**Three things changed from current:**
+1. `servesCuisine` array now starts with **"Middle Eastern"** then **"Israeli"** then "Mediterranean" — captures both query pools, leads with the broader (less politically-charged) frame.
+2. `alternateName` includes the Hebrew name `דלי סנטה מריה` for Hebrew-language search demand.
+3. `description` and `keywords` mention both Middle Eastern + Israeli, name signature dishes, and reference "inland Mallorca" + "authentic kitchen" for the NENI-rival positioning.
 
-**Implementation note for Chrome:** If Wix's UI doesn't let you edit the schema directly, the fallback path is via **Settings → Custom Code → Add Custom Code**, target = `<head>`, applies to = Home page only. Paste the new full schema as `<script type="application/ld+json">...</script>`. If a Wix-auto-generated schema is still firing, set the new custom one to load AFTER the auto-generated one (Wix uses the last-loaded JSON-LD).
+## Edit #4 — Home page body paragraph
 
-## Edit #4 — One sentence rebalance in home page body copy
+**Where:** Wix Editor → home page text section (the section currently saying "A Fresh Mediterranean Kitchen in Santa Maria del Camí")
 
-**Where:** Wix Editor → home page text section (the section that currently says "A Fresh Mediterranean Kitchen in Santa Maria del Camí")
-**Current text (first paragraph after the hero):**
+**Current:**
 > *"At Deli Santa Maria we are a Mediterranean restaurant serving vibrant food inspired by local ingredients and Middle Eastern flavors — fresh, simple, and full of life."*
 
 **Change to:**
-> *"At Deli Santa Maria we are inland Mallorca's authentic Israeli & Mediterranean deli — shakshuka cooked daily, hummus from scratch, real tahini, signature date-syrup pastries, and the warm welcome of a real Israeli kitchen."*
+> *"At Deli Santa Maria we are inland Mallorca's Middle Eastern & Israeli kitchen — the way it's eaten at home. Shakshuka cooked daily, hummus from scratch, real tahini, signature date-syrup pastries. Real food, real hands, daily."*
 
-The change does 3 things at once:
-- Promotes "Israeli" to first cuisine word (previously zero mentions on home page)
-- Names 4 signature Middle-Eastern dishes
-- Adds the "inland Mallorca" geo-positioning that captures the strategic gap
+Notes:
+- "Middle Eastern & Israeli" leads (dual frame, public-facing).
+- Names 4 signature dishes (shakshuka, hummus, tahini, date-syrup pastries).
+- "the way it's eaten at home" + "Real food, real hands, daily" — the differentiation against NENI's hotel-rooftop scene.
+- "inland Mallorca" — geographic positioning.
 
 ---
 
 ## Verification steps after edits
 
-1. **Publish the changes** in Wix Editor (click Publish, not just Save).
+1. **Publish** the changes in Wix Editor (click Publish, not just Save).
 2. **Wait 2 minutes** for Wix's CDN to propagate.
-3. **Fetch the live site** to verify the new content is live. Open https://www.deli-caffe.com in an incognito browser tab. Right-click → View Page Source. Search (Ctrl+F) for:
-   - `Israeli` — should now appear in the visible body, in the title tag, AND in the JSON-LD schema
-   - `servesCuisine` — verify the array now starts with `"Israeli","Middle Eastern",...`
-   - `alternateName` — verify the Hebrew name appears
-4. **Test the Google rich-results / schema validator:** https://search.google.com/test/rich-results — paste the URL, run it. Should report Restaurant schema valid with the new fields.
+3. **Fetch the live site** in an incognito tab. View Page Source. Search (Ctrl+F) for:
+   - `Middle Eastern` — should appear in title, meta description, and the JSON-LD `servesCuisine` array (first item)
+   - `Israeli` — should appear in description (schema), keywords (schema), alternateName Hebrew, and `servesCuisine` array (second item)
+   - `שקשוקה` or `דלי` — Hebrew alternateName visible in schema
+4. **Schema validator:** https://search.google.com/test/rich-results — paste the URL, run it. Should confirm Restaurant schema with no errors.
 
 ---
 
-## Report back
-
-When the 4 edits are live and verified, write back to Yaron (he'll relay to Cowork):
+## Report back via Yaron (since github.com is blocked for you)
 
 ```
-# Wix Quick Fixes — Live
+# Wix Quick Fixes — Live (Dual Positioning)
 
-✅/❌ Edit #1 — title tag changed
-✅/❌ Edit #2 — meta description changed
-✅/❌ Edit #3 — schema servesCuisine updated to include Israeli + Middle Eastern
-✅/❌ Edit #4 — body copy rebalanced (1 paragraph)
+✅/❌ Edit #1 — title tag changed to "Middle Eastern & Mediterranean Kitchen"
+✅/❌ Edit #2 — meta description rewritten with "Middle Eastern & Israeli"
+✅/❌ Edit #3 — schema servesCuisine = [Middle Eastern, Israeli, Mediterranean, ...]; description + keywords + Hebrew alternateName all present
+✅/❌ Edit #4 — body paragraph rebalanced
+
 ✅/❌ Site re-published and live
-✅/❌ Schema validator confirms no errors
+✅/❌ Schema validator passes
+✅/❌ Page source confirms both "Middle Eastern" and "Israeli" present
 
 Notes / issues: ___
 
@@ -150,15 +158,9 @@ Time taken: ___ minutes
 ## Things to NOT do in this session
 
 - ❌ Do not change the menu page (separate work)
-- ❌ Do not change the booking/contact flow (separate work)
-- ❌ Do not touch the photos or design (separate work)
-- ❌ Do not add new pages (the "Israeli food in Mallorca" dedicated landing page is a Week 21 deliverable, not now)
-- ❌ Do not modify any Wix settings unrelated to SEO Basics / page meta / schema
+- ❌ Do not touch booking/contact flow
+- ❌ Do not modify photos or design
+- ❌ Do not add new pages
+- ❌ Do not change Wix settings outside SEO Basics + page meta + schema
 
-These 4 edits are the surgical wins. Anything else risks breaking the live site for unrelated changes.
-
----
-
-## Why these 4 specifically
-
-From today's AI Mirror Report on Deli Santa Maria, these are the 4 highest-leverage CLEAN-bucket fixes. Combined, they retrain AI engines to categorize the restaurant correctly within 2–3 weeks. Everything in the STRENGTHEN and ADD buckets is more work; these 4 are the 80/20.
+These 4 edits are surgical. Anything else risks breaking the live site for unrelated changes.
